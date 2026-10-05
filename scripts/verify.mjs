@@ -28,29 +28,33 @@ for (const [name, expected] of Object.entries(originalHashes)) {
   const actual = createHash('sha256').update(readFileSync(join(root, 'assets', name))).digest('hex');
   if (actual !== expected) throw new Error(`Supplied original changed: ${name}`);
 }
-const hero = readFileSync(join(root, 'assets/profile.svg'), 'utf8');
+const hero = readFileSync(join(root, 'assets/identity.svg'), 'utf8');
 const embeddedLogo = hero.match(/href="data:image\/png;base64,([^"\s]+)"/);
 if (!embeddedLogo || createHash('sha256').update(Buffer.from(embeddedLogo[1], 'base64')).digest('hex') !== originalHashes['stealthcat-logo.png']) throw new Error('Hero must embed the exact supplied logo.');
 const heroRaster = new Resvg(hero).render();
 const heroPixels = heroRaster.pixels;
 let visibleLogoPixels = 0;
-for (let y = 40; y < 245; y++) {
-  for (let x = 640; x < 855; x++) {
+for (let y = 50; y < 215; y++) {
+  for (let x = 750; x < 925; x++) {
     const offset = (y * heroRaster.width + x) * 4;
     if (heroPixels[offset] > 130 && heroPixels[offset + 2] > 160) visibleLogoPixels++;
   }
 }
 if (visibleLogoPixels < 3000) throw new Error('Logo is not visible in the rendered hero.');
-if (heroRaster.width !== 900 || heroRaster.height !== 306) throw new Error('Desktop card dimensions are unexpected.');
-const mobile = readFileSync(join(root, 'assets/profile-mobile.svg'), 'utf8');
+if (heroRaster.width !== 960 || heroRaster.height !== 306) throw new Error('Desktop identity dimensions are unexpected.');
+const mobile = readFileSync(join(root, 'assets/identity-mobile.svg'), 'utf8');
 const mobileRaster = new Resvg(mobile).render();
-if (mobileRaster.width !== 480 || mobileRaster.height !== 380) throw new Error('Phone card dimensions are unexpected.');
+if (mobileRaster.width !== 480 || mobileRaster.height !== 324) throw new Error('Phone identity dimensions are unexpected.');
 if (!readme.includes('(max-width: 600px)')) throw new Error('Phone artwork must be selected by a picture source.');
-if ([...readme.matchAll(/width="50%"/g)].length !== 4) throw new Error('Expected four contacts in two equal columns.');
-if (readme.includes('<sub>') || readme.includes('signature.gif')) throw new Error('Avoid the previous tiny captions and duplicate footer.');
+if (/<rect\b/.test(hero) || /<rect\b/.test(mobile)) throw new Error('Identity must have a transparent background and no cards.');
+if (readme.includes('<details>') || readme.includes('stealthcat-banner.png') || readme.includes('grid-')) throw new Error('The profile should not display a banner or button grid.');
+for (const name of ['website', 'bot', 'telegram', 'github']) {
+  const nav = readFileSync(join(root, `assets/nav-${name}.svg`), 'utf8');
+  if (/<rect\b|stroke=/.test(nav)) throw new Error('Navigation should be plain text without a button shape.');
+}
 for (const contact of ['https://github.com/alkafeu', 'https://stealthcat.xyz/', 'https://t.me/stealthcatbot', 'https://t.me/alkafeu']) {
   if (!readme.includes(`href="${contact}"`)) throw new Error(`Missing selected contact: ${contact}`);
 }
 if (/TODO|YOUR_USERNAME|example\.com|168\.113\.|195\.63\.|2914\d|PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{16}/i.test(readme)) throw new Error('Placeholder or private server data in profile.');
 if (!readme.includes('prefers-reduced-motion: reduce')) throw new Error('Static alternatives must be available.');
-console.log(`Verified ${new Set(localImages).size} image references, original artwork hashes, desktop/mobile cards and equal contact columns.`);
+console.log(`Verified ${new Set(localImages).size} image references, original logo, transparent desktop/mobile artwork and plain text links.`);
