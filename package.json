@@ -1,0 +1,17 @@
+{
+  "name": "alkafeu-profile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Original SVG and GIF artwork for the alkafeu GitHub profile.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "gifenc": "1.0.3",
+    "marked": "18.1.0",
+    "omggif": "1.0.10"
+  }
+}
