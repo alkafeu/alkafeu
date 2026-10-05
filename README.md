@@ -1,39 +1,29 @@
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/header-static.svg">
-  <img src="assets/header.svg" alt="ALKAFEU — code, curiosity, cats. Тёмный баннер с мятным котом и звёздами." width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/profile-hero-static.svg">
+  <img src="assets/profile-hero.svg" alt="alkafeu. Создаю и развиваю StealthCat. Бот, веб и инфраструктура." width="100%">
 </picture>
 
 <br>
 
-### Привет, я alkafeu 👋
-
-Развиваю **StealthCat** — VPN-сервис с подключением через Telegram.  
+Развиваю **[StealthCat](https://stealthcat.xyz/)** — VPN-сервис с подключением через Telegram.<br>
 Работаю над ботом, веб-интерфейсами и инфраструктурой проекта.
 
 <br>
 
 <a href="https://stealthcat.xyz/">
-  <img src="assets/stealthcat.svg" alt="StealthCat — мой VPN-проект. Открыть stealthcat.xyz" width="100%">
+  <img src="assets/stealthcat-banner.png" alt="StealthCat — Интернет, каким ты его любишь. Открыть сайт проекта." width="100%">
 </a>
 
 <p>
-  <a href="https://stealthcat.xyz/"><img src="assets/link-website.svg" alt="Сайт StealthCat" height="44"></a>
-  <a href="https://t.me/stealthcatbot"><img src="assets/link-bot.svg" alt="Telegram-бот @stealthcatbot" height="44"></a>
-  <a href="https://t.me/alkafeu"><img src="assets/link-telegram.svg" alt="Мой Telegram: @alkafeu" height="44"></a>
-  <a href="https://github.com/alkafeu"><img src="assets/link-github.svg" alt="Мой GitHub: alkafeu" height="44"></a>
+  <a href="https://stealthcat.xyz/"><img src="assets/contact-website.svg" alt="Сайт StealthCat — stealthcat.xyz" height="40"></a>
+  <a href="https://t.me/stealthcatbot"><img src="assets/contact-bot.svg" alt="Telegram-бот @stealthcatbot" height="40"></a>
+  <a href="https://t.me/alkafeu"><img src="assets/contact-telegram.svg" alt="Мой Telegram: @alkafeu" height="40"></a>
+  <a href="https://github.com/alkafeu"><img src="assets/contact-github.svg" alt="Мой GitHub: alkafeu" height="40"></a>
 </p>
 
 <p><sub>Репозиторий проекта: <a href="https://github.com/alkafeu/StealthKitty">StealthKitty ↗</a></sub></p>
 
-<br>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/terminal-static.png">
-    <img src="assets/terminal.gif" alt="Кот у терминала. Надпись: make yourself at home." width="760">
-  </picture>
-</p>
-
-<p align="center">
-  <sub>code · curiosity · cats</sub>
-</p>
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/signature-static.png">
+  <img src="assets/signature.gif" alt="StealthCat. Всегда под лапой." width="100%">
+</picture>
